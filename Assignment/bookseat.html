@@ -16,7 +16,6 @@
         body {
             background-color: #fefde7;
         }
-
         nav {
             background-color: rgb(52, 52, 148);
             padding: 10px 30px;
@@ -59,6 +58,7 @@
             color: red;
         }
 
+        /* Main Section */
         .section {
             display: flex;
             justify-content: center;
@@ -91,45 +91,32 @@
 
 <body>
     <body>
+    <!-- Navigation -->
     <nav>
         <img src="/Assignment/Bus2.webp" alt="Logo">
         <a href="index.html">Book Seat</a>
     </nav>
+
+    <!-- Heading -->
     <h1>Welcome to Bus Booking System!</h1>
 
+    <!-- Section -->
     <div class="section">
         <div class="box">
+            <!-- Form -->
             <form>
-                <label>Username:</label>
-                <input type="text" required><br><br>
+                <label><strong>Select your payment method: </strong></label><br><br>
+                <input type="radio" name="payment" id="credit" value="credit">
+                <label for="credit">Credit Card</label><br><br>
+                <input type="radio" name="payment" id="debit" value="debit">
+                <label for="debit">Debit Card</label><br><br>
+                <input type="radio" name="payment" id="paypal" value="paypal">
+                <label for="paypal">UPI</label><br><br>
 
-                <label>User Password:</label>
-                <input type="password" required><br><br>
-
-                <label for="Gender">Gender: </label>
-                <input type="radio" name="gender" id="male" value="male">
-                <label for="male">Male</label>
-                <input type="radio" name="gender" id="female" value="female">
-                <label for="female">Female</label>
-                <input type="radio" name="gender" id="other" value="other">
-                <label for="other">Other</label><br><br>
-
-                <label for="city">City:</label>
-                <select id="city" required>
-                    <option value="" disabled selected>Choose from dropdown</option>
-                    <option value="Ghaziabad">Ghaziabad</option>
-                    <option value="Vaishali">Vaishali</option>
-                    <option value="Meerut">Meerut</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Jaipur">Jaipur</option>
-                    <option value="Raipur">Raipur</option>
-                    <option value="Prayagraj">Prayagraj</option>
-                    <option value="Jhansi">Jhansi</option>
-                </select><br><br>
-
-                <button type="submit"><a href="bookseat.html" style="color: white;">Book Seat</a></button>
+                <button type="submit"><a href="payment.html" style="color: white;">Proceed to Pay</a></button>
             </form>
 
+            <!-- Image -->
             <div class="image">
                 <img src="/Assignment/bus.jpg" alt="Bus">
             </div>
