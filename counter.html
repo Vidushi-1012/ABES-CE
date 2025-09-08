@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counnt Button</title>
+</head>
+<body>
+    <p>0</p>
+    <script>
+        var count=0;
+        function increaseCount(){
+            count++;
+            document.querySelector("p").innerText=count;
+        }
+        function decreaseCount(){
+            count--;
+            document.querySelector("p").innerText=count;
+        }
+    </script>
+    <button onclick="increaseCount()">Increase</button>
+    <button onclick="decreaseCount()">Decrease</button>
+</body>
+</html>
