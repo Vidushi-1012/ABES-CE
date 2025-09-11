@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 5.2</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f7f7f7;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      border: 5px solid black;
+      border-radius: 15px;
+      width: 500px;
+      padding: 20px;
+      background: white;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+      min-height: 500px;
+
+      /* ✅ New layout fix */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .image {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    button {
+      color: black;
+      background-color: rgb(255, 234, 4);
+      font-size: 20px;
+      font-weight: bold;
+      width: 180px;
+      height: 60px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: gold;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="image" id="cardContent">
+      <img src="https://www.shutterstock.com/image-illustration/image-bus-isolated-on-white-600nw-2578467983.jpg"
+        alt="Bus">
+    </div>
+    <button onclick="toggleContent()">Hide Image</button>
+  </div>
+
+  <script>
+    function toggleContent() {
+      const content = document.getElementById("cardContent");
+      const button = document.querySelector("button");
+
+      if (content.classList.contains("hidden")) {
+        content.classList.remove("hidden");
+        button.textContent = "Hide Image";
+      } else {
+        content.classList.add("hidden");
+        button.textContent = "Show Image";
+      }
+    }
+  </script>
+</body>
+
+</html>

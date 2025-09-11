@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 5.2</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f7f7f7;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      border: 5px solid black;
+      border-radius: 15px;
+      width: 500px;
+      padding: 20px;
+      background: white;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+      min-height: 500px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .image {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    button {
+      color: black;
+      background-color: rgb(255, 234, 4);
+      font-size: 20px;
+      font-weight: bold;
+      width: 200px;
+      height: 60px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: gold;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="image">
+      <img id="cardImage"
+        src="https://www.shutterstock.com/image-illustration/image-bus-isolated-on-white-600nw-2578467983.jpg"
+        alt="Bus">
+    </div>
+    <button onclick="changeImage()">Change Image</button>
+  </div>
+
+  <script>
+    let toggle = true;
+
+    function changeImage() {
+      const img = document.getElementById("cardImage");
+
+      if (toggle) {
+        img.src = "https://images.squarespace-cdn.com/content/v1/5bf6f213e17ba3b146f76362/1642797517509-SAR8CBEW5IMCWBE3L811/sunrise+benefits";
+        img.alt = "Sunsrise";
+      } else {
+        img.src = "https://media.istockphoto.com/id/1172427455/photo/beautiful-sunset-over-the-tropical-sea.jpg?s=612x612&w=0&k=20&c=i3R3cbE94hdu6PRWT7cQBStY_wknVzl2pFCjQppzTBg=";
+        img.alt = "Sunset";
+      }
+
+      toggle = !toggle;
+    }
+  </script>
+</body>
+
+</html>
