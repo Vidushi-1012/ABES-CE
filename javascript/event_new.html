@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .box {
+            text-align: center;
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <button onclick="red()">RED</button>
+        <button onclick="blue()">BLUE</button>
+        <button onclick="green()">GREEN</button>
+        <button onclick="yellow()">YELLOW</button>
+    </div>
+    <script>
+        function red() {
+            document.body.style.backgroundColor = "red";
+        }
+        function blue() {
+            document.body.style.backgroundColor = "blue";
+        }
+        function green() {
+            document.body.style.backgroundColor = "green";
+        }
+        function yellow() {
+            document.body.style.backgroundColor = "yellow";
+        }
+    </script>
+</body>
+
+</html>
