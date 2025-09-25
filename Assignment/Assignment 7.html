@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students by Branch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .branch-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .branch-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .branch-card h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .student {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .student:last-child {
+            border-bottom: none;
+        }
+
+        .student span {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="branch-container">
+        <div class="branch-card" id="common-branch">
+            <h2>Common Branches (Start with 'B')</h2>
+        </div>
+        <div class="branch-card" id="uncommon-branch">
+            <h2>Uncommon Branches</h2>
+        </div>
+    </div>
+
+    <script>
+        const students = [
+            { name: "Vidushi", roll_no: 71, class: "Btech-CE" },
+            { name: "Lavish", roll_no: 33, class: "Btech-CE" },
+            { name: "Udisha", roll_no: 64, class: "Btech-CE" },
+            { name: "Atharv", roll_no: 17, class: "CSE" },
+            { name: "Jayesh", roll_no: 28, class: "ME" },
+            { name: "Aditya", roll_no: 5, class: "DS" }
+        ];
+
+        const commonBranchName = "Btech-CE"; // Define the branch to group together
+
+        const commonContainer = document.getElementById("common-branch");
+        const uncommonContainer = document.getElementById("uncommon-branch");
+
+        function createStudentHTML(student) {
+            return `
+      <div class="student">
+        <span>${student.name}</span>
+        Roll No: ${student.roll_no}<br>
+        Class: ${student.class}
+      </div>
+    `;
+        }
+
+        students.forEach(student => {
+            const targetContainer = student.class === commonBranchName
+                ? commonContainer
+                : uncommonContainer;
+
+            targetContainer.innerHTML += createStudentHTML(student);
+        });
+    </script>
+</body>
+
+</html>
