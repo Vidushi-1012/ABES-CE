@@ -2,43 +2,72 @@
 <html lang="en">
 <head>
     <title>Simple To-Do List</title>
-    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin-bottom: 20px;
+        }
+
+        .task-item {
+            text-align: left;
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>My To-Do List</h1>
+    <div class="container">
+        <h1>My To-Do List</h1>
 
-    <input type="text" id="taskInput" placeholder="Enter a task...">
-    <button id="addButton">Add Task</button>
+        <input type="text" id="taskInput" placeholder="Enter a task...">
+        <button id="addButton">Add Task</button>
 
-    <h3>List of All Tasks</h3>
-    <!-- //print hello -->
-
-    <div id="taskList">
-        <p id="task1" class="task-item hidden"></p>
-        <p id="task2" class="task-item hidden"></p>
-        <p id="task3" class="task-item hidden"></p>
-        <p id="task4" class="task-item hidden"></p>
+        <h3>List of All Tasks</h3>
+        <div id="taskList"></div>
     </div>
 
     <script>
-        let currentTaskNumber = 1;
-
         const addButton = document.getElementById('addButton');
         const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
 
         addButton.onclick = function() {
-            const nextTask = document.getElementById('task' + currentTaskNumber);
-
-            
-            if (nextTask) {
-                const taskText = taskInput.value;
-                nextTask.innerText = taskText;
-                nextTask.classList.remove('hidden');
-                currentTaskNumber = currentTaskNumber + 1;
+            const taskText = taskInput.value.trim();
+            if (taskText !== '') {
+                const taskItem = document.createElement('p');
+                taskItem.className = 'task-item';
+                taskItem.innerText = taskText;
+                taskList.appendChild(taskItem);
                 taskInput.value = '';
             } else {
-                alert("You have added the maximum number of tasks!");
+                alert("Please enter a task before adding.");
             }
         };
     </script>
