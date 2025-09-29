@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple To-Do List</title>
+    
+</head>
+<body>
+
+    <h1>My To-Do List</h1>
+
+    <input type="text" id="taskInput" placeholder="Enter a task...">
+    <button id="addButton">Add Task</button>
+
+    <h3>List of All Tasks</h3>
+    <!-- //print hello -->
+
+    <div id="taskList">
+        <p id="task1" class="task-item hidden"></p>
+        <p id="task2" class="task-item hidden"></p>
+        <p id="task3" class="task-item hidden"></p>
+        <p id="task4" class="task-item hidden"></p>
+    </div>
+
+    <script>
+        let currentTaskNumber = 1;
+
+        const addButton = document.getElementById('addButton');
+        const taskInput = document.getElementById('taskInput');
+
+        addButton.onclick = function() {
+            const nextTask = document.getElementById('task' + currentTaskNumber);
+
+            
+            if (nextTask) {
+                const taskText = taskInput.value;
+                nextTask.innerText = taskText;
+                nextTask.classList.remove('hidden');
+                currentTaskNumber = currentTaskNumber + 1;
+                taskInput.value = '';
+            } else {
+                alert("You have added the maximum number of tasks!");
+            }
+        };
+    </script>
+
+</body>
+</html>

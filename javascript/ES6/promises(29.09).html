@@ -1,0 +1,35 @@
+<!-- then, catch, finally -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        const mypromise=new Promise((resolve,reject)=>{
+            const password="vi10";
+            if(password.length>8){
+                resolve("pwd strength is okay.");
+            }
+            else{
+                reject("password is shorter in length");
+            }
+        })
+        //console.log(mypromise);
+
+        mypromise.then((msg)=>{
+            console.log(msg);
+        })
+        mypromise.catch((err)=>{
+            console.log(err);
+        })
+        .finally(()=>{
+            console.log("we are at finally block");
+        })
+
+        <!-- when we want to keep many promises--like 1 lakh, manually typing is useless, so we use async await -->
+
+    </script>
+</body>
+</html>
