@@ -1,0 +1,8 @@
+#vid{
+    border: 2px solid rgb(124, 124, 124);
+    height:600px;
+    width:350px;
+    margin: 15px;
+    padding:15px;
+    text-align: center;  
+}
