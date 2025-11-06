@@ -88,37 +88,94 @@
 // }
 
 // export default App;
-import React from "react";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.css";
-import Asgn1 from "./components/Asgn1";
-import Asgnp2 from "./components/Asgnp2";
-import Asgnp3 from "./components/Asgnp3";
-import Asgn4 from "./components/Asgn4";
+// import React from "react";
+// import "./App.css";
+// import "bootstrap/dist/css/bootstrap.css";
+// import Asgn1 from "./components/Asgn1";
+// import Asgnp2 from "./components/Asgnp2";
+// import Asgnp3 from "./components/Asgnp3";
+// import Asgn4 from "./components/Asgn4";
+
+// function App() {
+//   return (
+//     <div>
+//       <Asgn1 />
+//       <Asgnp2 />
+//       <div id="flexbox">
+//         <Asgnp3
+//           name="Pizza"
+//           img="https://amici.ph/cdn/shop/files/MARGHERITA_1200x.jpg?v=1747263773"
+//           price="Rs.250"
+//         />
+//         <Asgnp3
+//           name="Burger"
+//           img="https://www.southernliving.com/thmb/H04pCVJ5bLAnwPs2hFCmpNs5Uec=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ultimate-southern-burger_batch64_beauty01-86-b9c26e256dd34e39b6c0cfb0c02a9fef.jpg"
+//           price="Rs.150"
+//         />
+//         <Asgnp3
+//           name="Sprite"
+//           img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsouCYTJ3aDtB5m47lyrI3zp9BChiUoIzlsAHVC3NQYzR_rgZFCqt1G9N5jdzLNaWi_5E&usqp=CAU"
+//           price="Rs.50"
+//         />
+//       </div>
+//       <Asgn4 />
+//     </div>
+//   );
+// }
+
+// export default App;
+// import React from 'react'
+// import Link1 from './components/Link1';
+
+// function App() {
+//   return (
+//     <div>
+//       <Link1/>
+//     </div>
+//   )
+// }
+
+// export default App
+import React, { useState } from "react";
+import Login from "./components/login";
+import Register from "./components/Register";
+
 
 function App() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  let title;
+  let form;
+  let toggleText;
+  let buttonText;
+
+  if (isLogin) {
+    title = "Login";
+    form = <Login/>;
+    form = <Login/>;
+    toggleText = "Don't have an account?";
+    buttonText = "Register";
+  } else {
+    title = "Register";
+    form = <Register/>;
+    toggleText = "Already have an account?";
+    buttonText = "Login";
+  }
+
   return (
     <div>
-      <Asgn1 />
-      <Asgnp2 />
-      <div id="flexbox">
-        <Asgnp3
-          name="Pizza"
-          img="https://amici.ph/cdn/shop/files/MARGHERITA_1200x.jpg?v=1747263773"
-          price="Rs.250"
-        />
-        <Asgnp3
-          name="Burger"
-          img="https://www.southernliving.com/thmb/H04pCVJ5bLAnwPs2hFCmpNs5Uec=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ultimate-southern-burger_batch64_beauty01-86-b9c26e256dd34e39b6c0cfb0c02a9fef.jpg"
-          price="Rs.150"
-        />
-        <Asgnp3
-          name="Sprite"
-          img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsouCYTJ3aDtB5m47lyrI3zp9BChiUoIzlsAHVC3NQYzR_rgZFCqt1G9N5jdzLNaWi_5E&usqp=CAU"
-          price="Rs.50"
-        />
-      </div>
-      <Asgn4 />
+      <center>
+        <h2>{title}</h2>
+      </center>
+
+      {form}
+
+      <p>
+        {toggleText}
+        <button onClick={() => setIsLogin(!isLogin)}>
+          {buttonText}
+        </button>
+      </p>
     </div>
   );
 }
