@@ -1,0 +1,124 @@
+
+#book {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 15px;
+}
+
+#book img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+#vid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#book div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.book-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-controls button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 32px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.quantity-controls button:hover:not(:disabled) {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.quantity-controls button:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+}
+
+.add-to-cart-btn {
+    background: #002c9a !important;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    max-width: 200px;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+    background: #08038e !important;
+    transform: translateY(-2px);
+}
+
+.add-to-cart-btn:disabled {
+    background: #94a3b8 !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+}
+
+#book span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    min-width: 30px;
+    text-align: center;
+}
+
+#book h1:last-of-type {
+    background: #0b037a;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.add-to-cart-btn{
+    margin-top: 10px;
+}
