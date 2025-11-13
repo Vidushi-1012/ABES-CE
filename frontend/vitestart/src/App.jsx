@@ -136,46 +136,121 @@
 // }
 
 // export default App
-import React, { useState } from "react";
-import Login from "./components/login";
-import Register from "./components/Register";
+// import React from "react";
+// import Login from "./components/login";
+// import Register from "./components/Register";
+// import Navbar from "./components/Navbar";
+// import Cardnew from "./components/Cardnew";
 
+
+// function App() {
+ 
+//   return (
+//     <div>
+//       <Navbar/>
+//       <center>
+//         <h2>Vidushi</h2>
+//       </center>
+
+//       <Cardnew/>
+//     </div>
+//   );
+// }
+
+// export default App;
+// import React,{useEffect,useState} from 'react'
+// import Fashion from './components/Fashion'
+// function App() {
+//   const [books,setBooks]=useState([])
+//   useEffect(()=>{
+//     fetch('https://fakestoreapi.com/products')
+//     .then(res=>res.json())
+//     .then(data=>{
+//       setBooks(data)
+//     })
+//   },[]) 
+//   return (
+//     <div>
+//       {
+//         books.map((b,i)=>(
+//           <Fashion keys={i} props={b} />
+//         ))
+//       }
+      
+//     </div>
+//   )
+// // }
+
+
+// export default App
+
+// import React, { useEffect, useState } from 'react';
+// import WeatherCard from '../../../Weather/src/components/WeatherCard';
+
+// function App() {
+//   const [cities, setCities] = useState(['Delhi', 'Mumbai', 'Bangalore','Ghaziabad']);
+//   const [weatherData, setWeatherData] = useState([]);
+//   const apiKey = 'aa6568bfcd8e4685bcd81d32f6fd3c7a';
+
+//   useEffect(() => {
+
+//     cities.forEach(city => {
+//       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+//         .then(res => res.json())
+//         .then(data => {
+//           setWeatherData(prev => [...prev, data]);
+//         });
+//     });
+//   }, []);
+
+//   return (
+//     <div>
+//       {weatherData.map((w, i) => (
+//         <WeatherCard key={i} props={w} />
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default App;
+import React, { useEffect, useState } from 'react';
+import WeatherCard from './components/WeatherCard';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [cities, setCities] = useState(['Delhi', 'Mumbai', 'Bangalore']);
+  const [weatherData, setWeatherData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const apiKey = 'aa6568bfcd8e4685bcd81d32f6fd3c7a';
 
-  let title;
-  let form;
-  let toggleText;
-  let buttonText;
+  useEffect(() => {
+    setWeatherData([]);
+    setLoading(true);
 
-  if (isLogin) {
-    title = "Login";
-    form = <Login/>;
-    form = <Login/>;
-    toggleText = "Don't have an account?";
-    buttonText = "Register";
-  } else {
-    title = "Register";
-    form = <Register/>;
-    toggleText = "Already have an account?";
-    buttonText = "Login";
-  }
+    Promise.all(
+      cities.map(city =>
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+          .then(res => res.json())
+          .catch(err => ({ error: true, city }))
+      )
+    ).then(results => {
+      setWeatherData(results);
+      setLoading(false);
+    });
+  }, [cities]);
 
   return (
-    <div>
-      <center>
-        <h2>{title}</h2>
-      </center>
-
-      {form}
-
-      <p>
-        {toggleText}
-        <button onClick={() => setIsLogin(!isLogin)}>
-          {buttonText}
-        </button>
-      </p>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', padding: '2rem' }}>
+      {loading ? (
+        <p>Loading weather data...</p>
+      ) : (
+        weatherData.map((data, i) =>
+          data.error ? (
+            <div key={i}>Error fetching data for {data.city}</div>
+          ) : (
+            <WeatherCard key={i} weather={data} />
+          )
+        )
+      )}
     </div>
   );
 }

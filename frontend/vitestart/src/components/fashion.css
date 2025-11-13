@@ -1,0 +1,13 @@
+#card{
+    border: 5px solid rgb(143, 143, 255);
+    height: 200px;
+    width: 250px;
+    text-align: center;
+    margin: 10px;
+    justify-content: center;
+    padding-top: 50px;
+}
+*{
+    margin: auto;
+
+}
