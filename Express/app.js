@@ -25,6 +25,8 @@ const express=require('express');
 const app=express();
 const port=8000;
 
+app.use(express.json());
+
 //database(json) store
 const students=[
     {
@@ -57,13 +59,62 @@ app.get('/about/:id', (req,res)=>{
         if(!student){
             return res.status(404).json({message: "Data not found", data: student});
         }
-        res.status(200).json({message:"Data found", data: student});
+        res.status(200).json({message:"Data found", data: students});
     }
     catch(err){
         res.status(500).json({message:"data not found", error: err.message});
     }
 })
 
+//creating data
+app.post('/add',(req,res)=>{
+    try{
+        const newStud={
+            id:students.length+1,
+            //... is used to destructure
+            ...req.body
+        }
+        students.push(newStud)
+        res.status(200).json({message: "Data successfully created!", data: newStud})
+    }
+    catch(err){
+        res.status(500).json({message: " Data not found ", error: err.message})
+    }
+})
+
+app.put('/edit/:id',(req,res)=>{
+    try{
+        const id = req.params.id;
+        const index = students.find(s=>s.id==id);
+
+        if (index==-1){
+            return res.status(404).json({message: "Student data not found."});
+        }
+        students[index]={
+            ...students[index],
+            ...req.body
+        }
+        return res.status(200).json({message: "Data updated!", data:students})
+    } catch(err) {
+        res.status(500).json({message:"Error."});
+    }
+});
+
+//data deletion
+app.delete('/delete/:id',(req,res)=>{
+    try{
+        const id=req.params.id;
+        const index=students.find(s=>s.id==id);
+        if (index==-1){
+            return res.status(404).json({message: "Student data not found."});
+        }
+        students.splice(index,1);
+        res.status(200).json({message: "Data deleted successfully!"})
+    }
+    catch(err) {
+        res.status(500).json({message:"Error."});
+    }
+})
 
 app.listen(port,()=>{
     console.log(`server is running at http://localhost:${port}`)
